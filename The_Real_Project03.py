@@ -240,6 +240,35 @@ def divorce_before_death(family_dict, individual_dict):
                 if age_calculator(divorce_date, wife_death) < 0:
                     ErrorCollector.error_list.append(f"ERROR: US06: {key_family} has a divorce date {divorce_date.snake_year_month_day()} occurs before wife's {value_family.wife} death at {wife_death.snake_year_month_day()}")
 
+'''Sprint 2'''
+'''User Story 17: No marriages to children'''
+def no_marriage_to_children(family_dict):
+    error = 0
+    for i in family_dict:
+        for temp in i[5]:
+            for j in family_dict:
+                if(j[1]==temp or j[2]==temp and j[1]==i[1] or j[1]==i[2]):
+                    print("Error: US17 " + temp + "is married to parent.")
+                    error += 1
+    return error
+
+'''User Story 22: Unique IDs'''
+def unique_ids(family_dict, individual_dict):
+    uniqid = list()
+    famid = list()
+    error = 0
+    for i in family_dict:
+        if i[0] not in famid:
+            famid.append(i[0])
+        else:
+            print("Error: US22" + i[0] + "is not unique in family list.")
+            error += 1
+    for i in individual_dict:
+        if i[0] not in uniqid:
+            uniqid.append(i[0])
+        else:
+            print("Error: US22" + i[0] + "is not unique in individual list.")
+            error += 1
 
 """Haoran's Code Goes Here"""
 '''Sprint 1'''
@@ -344,6 +373,8 @@ def main():
     '''Jigar Sprint 1: US04, US06'''
     # marriage_before_divorce(family_dict) # US04
     # divorce_before_death(family_dict, individual_dict) # US06
+    # no_marriage_to_children(family_dict) # US17
+    # unique_ids(family_dict, individual_dict) # US22
 
     '''Haoran Sprint 1: US11, US12'''
     # no_bigamy(family_dict, individual_dict) # US11
