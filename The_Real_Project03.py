@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[34]:
+
+
 """The Brand New Project 03 With Better Data Structure And Better Visual"""
 """Please Make Code As Minimalist As Possible"""
 from prettytable import PrettyTable
@@ -247,6 +253,7 @@ def divorce_before_death(family_dict, individual_dict):
 def no_bigamy(family_dict, individual_dict):
     individual_family_dict = {}
     for key, value in family_dict.items():
+        print(key, value)
         if value.husb not in individual_family_dict:
             individual_family_dict[value.husb] = [key]
         else:
@@ -270,9 +277,11 @@ def no_bigamy(family_dict, individual_dict):
 '''User Story 12: Parents Not Too Old'''
 def parents_not_too_old(family_dict, individual_dict):
     for id, individual in individual_dict.items():
+        #print(id, individual)
         if individual.famc != 'NA':
             dad = family_dict[individual.famc].husb
             mom = family_dict[individual.famc].wife
+            
             how_much_older_is_dad = age_calculator(individual.birt, individual_dict[dad].birt)
             how_much_older_is_mom = age_calculator(individual.birt, individual_dict[mom].birt)
             if how_much_older_is_dad != 'NA' and how_much_older_is_dad >= 80:
@@ -282,6 +291,38 @@ def parents_not_too_old(family_dict, individual_dict):
                 ErrorCollector.error_list.append(f"ERROR: US12: {id} has a father who is {how_much_older_is_mom} older which is more than 60 and birthday is set to NA")
                 individual_dict[mom].birt.setNA()
 
+"""Sprint 2"""
+"""User Story 13: Siblings spacing"""    
+def siblings_spacing(family_dict, individual_dict):
+    for id, individual in individual_dict.items():
+        if individual.famc != 'NA':
+            siblings = family_dict[individual.famc].chil
+            if len(siblings) != 1:
+                for child in siblings:
+                    sib_age = date(int(individual_dict[child].birt.year), int(individual_dict[child].birt.month), int(individual_dict[child].birt.day))
+                    self_age = date(int(individual.birt.year), int(individual.birt.month), int(individual.birt.day))
+                    difference = abs(self_age - sib_age).days
+                    '''8 months is 240 days '''
+                    if difference > 1 and difference < 240:
+                        ErrorCollector.error_list.append(f"ERROR: US13: {id} has a sibling whose birth date is too close")
+
+
+"""User story 14: Mutiple births <= 5"""
+def mutiple_birth(family_dict, individual_dict):
+    for id, individual in individual_dict.items():
+        if individual.famc != 'NA':
+            siblings = family_dict[individual.famc].chil
+            if len(siblings) > 5:
+                birth = 0
+                for child in siblings:
+                    sib_age = date(int(individual_dict[child].birt.year), int(individual_dict[child].birt.month), int(individual_dict[child].birt.day))
+                    self_age = date(int(individual.birt.year), int(individual.birt.month), int(individual.birt.day))
+                    difference = abs(self_age - sib_age).days
+                    '''8 months is 240 days '''
+                    if difference <= 1:
+                        birth += 1
+                    if birth > 5:
+                        ErrorCollector.error_list.append(f"ERROR: US14: {id} has too many siblings born at the same time")
 
 """Shengda's Code Goes Here"""
 '''Sprint 1'''
@@ -312,7 +353,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Sprint-1-test.ged'
+    file_path = 'Hercule-Poirot.ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
@@ -346,15 +387,17 @@ def main():
     # divorce_before_death(family_dict, individual_dict) # US06
 
     '''Haoran Sprint 1: US11, US12'''
-    # no_bigamy(family_dict, individual_dict) # US11
-    # parents_not_too_old(family_dict, individual_dict) # US12
+    #no_bigamy(family_dict, individual_dict) # US11
+    parents_not_too_old(family_dict, individual_dict) # US12
+    siblings_spacing(family_dict, individual_dict) #US13
+    mutiple_birth(family_dict, individual_dict)
 
 
     '''Uncomment these if you want to see the individual and family objects created from Individual and Family class'''
-    for key, value in individual_dict.items():
-        print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
-    for key, value in family_dict.items():
-        print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
+    #for key, value in individual_dict.items():
+    #    print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
+    #for key, value in family_dict.items():
+    #    print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
 
     # 4. Draw Pretty Tables
     draw_individual_prettytable(individual_dict)
@@ -369,3 +412,10 @@ def main():
 """Run Main Function"""
 if __name__ == '__main__':
     main()
+
+
+# In[ ]:
+
+
+
+
