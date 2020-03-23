@@ -211,6 +211,24 @@ def birth_before_marriage(individual_dict, family_dict):
                     ErrorCollector.error_list.append(f"ERROR: US02: {key} has a wedding date {family_dict[value.fams].marr.snake_year_month_day()} occurs before birthday {value.birt.snake_year_month_day()}")
                     family_dict[value.fams].marr.setNA()
 
+'''Sprint 2'''
+'''User Story 03: Birth Before Death'''
+def birth_before_death(individual_dict):
+    for id, value in individual_dict.items():
+        if value.birt.snake_year_month_day() != 'NA' and value.deat.snake_year_month_day() != 'NA':
+            if age_calculator(value.deat, value.birt) <= 0:
+                ErrorCollector.error_list.append(f"ERROR: US03: {id} has a birthday {value.birt.snake_year_month_day()} that occurred after death date {value.deat.snake_year_month_day()}. Birthday was set to NA.")
+                value.birt.setNA()
+
+'''User Story 08: Birth Before Marriage Of Parents'''
+def birth_before_marriage_of_parents(individual_dict, family_dict):
+    for id, value in individual_dict.items():
+        if value.famc != 'NA':
+            if family_dict[value.famc].marr != 'NA':
+                if age_calculator(value.birt, family_dict[value.famc].marr) != 'NA' and age_calculator(value.birt, family_dict[value.famc].marr) < 0:
+                    ErrorCollector.error_list.append(f"ERROR: US08: {id} has a birth date {value.birt.snake_year_month_day()} that's earlier than parents' wedding date {family_dict[value.famc].marr.snake_year_month_day()}. Birthday was set to NA.")
+                    value.birt.setNA()
+
 
 """Jigar's Code Goes Here"""
 '''Sprint 1'''
@@ -312,7 +330,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Sprint-1-test.ged'
+    file_path = 'Sprint-2-HanqingLiu.ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
@@ -340,6 +358,9 @@ def main():
     '''Hanqing Sprint 1: US01, US02'''
     # dates_before_current_date(individual_dict, family_dict) # US01
     # birth_before_marriage(individual_dict, family_dict) # US02
+    '''Hanqing Sprint 2: US03, US08'''
+    birth_before_death(individual_dict)
+    birth_before_marriage_of_parents(individual_dict, family_dict)
 
     '''Jigar Sprint 1: US04, US06'''
     # marriage_before_divorce(family_dict) # US04
@@ -351,10 +372,10 @@ def main():
 
 
     '''Uncomment these if you want to see the individual and family objects created from Individual and Family class'''
-    for key, value in individual_dict.items():
-        print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
-    for key, value in family_dict.items():
-        print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
+    # for key, value in individual_dict.items():
+    #     print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
+    # for key, value in family_dict.items():
+    #     print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
 
     # 4. Draw Pretty Tables
     draw_individual_prettytable(individual_dict)
@@ -364,8 +385,11 @@ def main():
     for error in ErrorCollector.error_list:
         print(error)
 
+    # 6. Export for testing
+
+    return [individual_dict, family_dict]
 
 
 """Run Main Function"""
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
