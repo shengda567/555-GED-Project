@@ -1,0 +1,56 @@
+"""Shengda's Code Goes Here"""
+'''Sprint 2'''
+'''User Story 10: Marriage after 14'''
+def marriage_after_14(family_dict, individual_dict):
+    US10_report = {}
+    for fam, family in family_dict.items():
+        #if individual.famc != 'NA':
+        husband_ID = family.husb
+        wife_ID = family.wife
+        marriage_date = family.marr.snake_year_month_day()
+        if marriage_date != 'NA':
+            husband_birth_day = individual_dict[husband_ID].birt.snake_year_month_day()
+            wife_birth_day = individual_dict[wife_ID].birt.snake_year_month_day()
+
+            if calculate_year_dif(husband_birth_day, marriage_date) >= 14\
+                and calculate_year_dif(wife_birth_day, marriage_date) >= 14:
+                US10_report[fam] = True
+            else:
+                US10_report[fam] = [marriage_date, husband_birth_day, wife_birth_day]
+    for id, boolean in US10_report.items():
+        if boolean != True:
+            print(f"ERROR: FAMILY: US10: Family ID: {id}, marriage date is {boolean[0]}, "
+                  f"husband birth day is {boolean[1]}, wife birth day is {boolean[2]},"
+                  f"married before 14 years old.")
+    #print(US10_report)
+    return US10_report
+
+#User Story 10 helper
+def calculate_year_dif(one_date_string, another_date_string):
+    if one_date_string != 'NA' and another_date_string != 'NA':
+        year1, month1, day1 = one_date_string.split("-")
+        year2, month2, day2 = another_date_string.split("-")
+        year_dif = int(year2) - int(year1) - ((int(month2), int(day2)) < (int(month1), int(day1)))
+        return year_dif
+    return True
+
+'''User Story 31: List living single'''
+def list_living_single(family_dict, individual_dict):
+    US31_report = {}
+
+    for indi, individual in individual_dict.items():
+        indi_birth_date = individual.birt.snake_year_month_day()
+        indi_death_date = individual.deat.snake_year_month_day()
+        indi_spouse = individual.fams
+
+        if indi_birth_date != 'NA' and indi_death_date == 'NA':
+            if age_calculator(date.today(), individual.birt) >= 30 and indi_spouse == 'NA':
+                US31_report[indi] = [age_calculator(date.today(), individual.birt), indi_spouse]
+            else:
+                US31_report[indi] = False
+    for id, boolean in US31_report.items():
+        if boolean != False:
+            print(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
+                  f"who is living people over 30 but have never been married")
+    #print(US31_report)
+    return US31_report
