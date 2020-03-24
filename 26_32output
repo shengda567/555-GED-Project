@@ -1,0 +1,7 @@
+birth day 1990-1-1 has multiple births ['@I1@', '@I6@', '@I7@', '@I8@', '@I28@']
+birth day 1991-1-1 has multiple births ['@I4@', '@I5@']
+birth day 1992-1-1 has multiple births ['@I9@', '@I10@']
+birth day 1993-1-1 has multiple births ['@I12@', '@I13@', '@I14@']
+birth day 1999-1-1 has multiple births ['@I17@', '@I18@', '@I19@', '@I20@', '@I21@', '@I22@', '@I23@', '@I24@', '@I25@', '@I26@', '@I27@']
+ERROR: family id is @F7@, wife is @I14@, husband is @I12@ in family record, but in individual record, individual @I12@ is in @F8@ family
+@I1@ James /Bond/ M 1990-1-1 NA @F2@ @F1@
