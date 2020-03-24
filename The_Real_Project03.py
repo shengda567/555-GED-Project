@@ -329,6 +329,7 @@ def main():
     # 3. Das Dictionary Für Individual Objects & Das Dictionary Für Family Objects
     # 4. Draw Pretty Tables
     # 5. Print all the errors
+    # 6. Export for testing
     #
     file_path = 'Sprint-2-HanqingLiu.ged'
     #
@@ -359,8 +360,8 @@ def main():
     # dates_before_current_date(individual_dict, family_dict) # US01
     # birth_before_marriage(individual_dict, family_dict) # US02
     '''Hanqing Sprint 2: US03, US08'''
-    birth_before_death(individual_dict)
-    birth_before_marriage_of_parents(individual_dict, family_dict)
+    birth_before_death(individual_dict) # US03
+    birth_before_marriage_of_parents(individual_dict, family_dict) # US08
 
     '''Jigar Sprint 1: US04, US06'''
     # marriage_before_divorce(family_dict) # US04
@@ -386,7 +387,6 @@ def main():
         print(error)
 
     # 6. Export for testing
-
     return [individual_dict, family_dict]
 
 
