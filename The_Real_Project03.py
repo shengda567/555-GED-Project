@@ -243,32 +243,40 @@ def divorce_before_death(family_dict, individual_dict):
 '''Sprint 2'''
 '''User Story 17: No marriages to children'''
 def no_marriage_to_children(family_dict):
-    error = 0
-    for i in family_dict:
-        for temp in i[5]:
-            for j in family_dict:
-                if(j[1]==temp or j[2]==temp and j[1]==i[1] or j[1]==i[2]):
-                    print("Error: US17 " + temp + "is married to parent.")
-                    error += 1
-    return error
+  for key, individual in individual_dict.items():
+        if individual.famc != 'NA' and individual.fams != 'NA':
+            husband = family_dict[individual.fams].husb
+            wife = family_dict[individual.fams].wife
+            father = family_dict[individual.famc].husb
+            mother = family_dict[individual.famc].wife
+            if husband == father:
+                ErrorCollector.error_list.append(f"ERROR: US17: Individual {key} is married to her father {father} which is illegal.")
+            elif wife == mother:
+                ErrorCollector.error_list.append(f"ERROR: US17: Individual {key} is married to his mother {mother} which is illegal.")
 
 '''User Story 22: Unique IDs'''
-def unique_ids(family_dict, individual_dict):
-    uniqid = list()
-    famid = list()
-    error = 0
-    for i in family_dict:
-        if i[0] not in famid:
-            famid.append(i[0])
+def unique_ids(unfiltered_file):
+    individuals = []
+    families = []
+    for line in unfiltered_file:
+        if line == '':
+            continue
         else:
-            print("Error: US22" + i[0] + "is not unique in family list.")
-            error += 1
-    for i in individual_dict:
-        if i[0] not in uniqid:
-            uniqid.append(i[0])
-        else:
-            print("Error: US22" + i[0] + "is not unique in individual list.")
-            error += 1
+            line = line.strip('\n')
+            line_split = line.split(' ')
+            if line_split[0] == '0':
+                if 'INDI' in line_split and line_split[1] != 'INDI':
+                    id = line_split[1]
+                    if id in individuals:
+                        ErrorCollector.error_list.append(f"ERROR: US22: Individual {id} already exists and will override previous data")
+                    else:
+                        individuals.append(id)
+                elif 'FAM' in line_split and line_split[1] != 'FAM':
+                    id = line_split[1]
+                    if id in families:
+                        ErrorCollector.error_list.append(f"ERROR: US22: Family {id} already exists and will override previous data")
+                    else:
+                        families.append(id)
 
 """Haoran's Code Goes Here"""
 '''Sprint 1'''
@@ -373,8 +381,9 @@ def main():
     '''Jigar Sprint 1: US04, US06'''
     # marriage_before_divorce(family_dict) # US04
     # divorce_before_death(family_dict, individual_dict) # US06
-    # no_marriage_to_children(family_dict) # US17
-    # unique_ids(family_dict, individual_dict) # US22
+    '''Jigar Sprint 2: US17, US22'''
+    # no_marriage_to_children(family_dict, individual_dict) # US17
+    # unique_ids(unfiltered_file) # US22
 
     '''Haoran Sprint 1: US11, US12'''
     # no_bigamy(family_dict, individual_dict) # US11
