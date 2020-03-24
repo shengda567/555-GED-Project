@@ -1,0 +1,196 @@
+0 NOTE it's a note
+0 555-Project
+0 HEAD
+1 SOUR Family Echo
+2 WWW http://www.familyecho.com/
+1 FILE My Family
+1 DATE 10 FEB 2020
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @I1@
+2 NAME Hanqing Liu
+1 SUBN
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Hercule /Poirot/
+2 GIVN Hercule
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1972
+1 FAMS @F1@
+1 FAMC @F3@
+0 @I2@ INDI
+1 NAME Jules-Louis /Poirot/
+2 GIVN Jules-Louis
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 15 AUG 1928
+1 DEAT Y
+2 DATE 5 MAR 1993
+1 FAMS @F3@
+0 @I3@ INDI
+1 NAME Godelieve /Poirot/
+2 GIVN Godelieve
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX F
+1 BIRT
+2 DATE 11 JAN 1925
+1 DEAT Y
+2 DATE 7 NOV 1998
+1 FAMS @F3@
+0 @I4@ INDI
+1 NAME Agatha /Christie/
+2 GIVN Agatha
+2 SURN Christie
+2 _MARNM Christie
+1 SEX F
+1 BIRT
+2 DATE 29 JAN 1999
+1 FAMC @F4@
+0 @I5@ INDI
+1 NAME Felicity /Poirot/
+2 GIVN Felicity
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX F
+1 BIRT
+2 DATE 7 MAR 1972
+1 FAMS @F1@
+0 @I6@ INDI
+1 NAME Conan /Poirot/
+2 GIVN Conan
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 9 FEB 2008
+1 FAMC @F5@
+0 @I7@ INDI
+1 NAME Ariadne /Poirot/
+2 GIVN Ariadne
+2 SURN Poirot
+2 _MARNM Bell
+1 SEX F
+1 BIRT
+2 DATE 17 JUL 1972
+1 FAMS @F4@
+1 FAMS @F5@
+1 FAMC @F3@
+0 @I8@ INDI
+1 NAME Arthur /Hastings/
+2 GIVN Arthur
+2 SURN Hastings
+2 _MARNM Hastings
+1 SEX M
+1 BIRT
+2 DATE 28 APR 1973
+1 DEAT Y
+2 DATE 13 APR 2005
+1 FAMS @F4@
+0 @I9@ INDI
+1 NAME Joseph /Bell/
+2 GIVN Joseph
+2 SURN Bell
+2 _MARNM Bell
+1 SEX M
+1 BIRT
+2 DATE 28 MAY 1978
+1 FAMS @F5@
+0 @I10@ INDI
+1 NAME Herculee /Poirot/
+2 GIVN Herculee
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1973
+1 FAMC @F3@
+0 @I11@ INDI
+1 NAME Herculed /Poirot/
+2 GIVN Herculed
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1973
+1 FAMC @F3@
+0 @I12@ INDI
+1 NAME Herculec /Poirot/
+2 GIVN Herculec
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1973
+1 FAMC @F3@
+0 @I13@ INDI
+1 NAME Herculea /Poirot/
+2 GIVN Herculea
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1973
+1 FAMC @F3@
+0 @I14@ INDI
+1 NAME Herculeb /Poirot/
+2 GIVN Herculeb
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 6 SEP 1973
+1 FAMC @F3@
+0 @I15@ INDI
+1 NAME Herculeb /Poirot/
+2 GIVN Herculeb
+2 SURN Poirot
+2 _MARNM Poirot
+1 SEX M
+1 BIRT
+2 DATE 6 SEP 1973
+1 FAMC @F3@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I5@
+1 MARR
+2 DATE 24 APR 2005
+1 _CURRENT Y
+0 @F3@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 CHIL @I1@
+1 CHIL @I7@
+1 CHIL @I10@
+1 CHIL @I11@
+1 CHIL @I12@
+1 CHIL @I13@
+1 CHIL @I14@
+1 CHIL @I15@
+1 MARR
+2 DATE 15 AUG 1958
+1 _CURRENT Y
+0 @F4@ FAM
+1 HUSB @I8@
+1 WIFE @I7@
+1 CHIL @I4@
+1 MARR
+2 DATE 26 OCT 1998
+1 EVEN
+2 TYPE Ending
+1 _CURRENT N
+0 @F5@ FAM
+1 HUSB @I9@
+1 WIFE @I7@
+1 CHIL @I6@
+1 MARR
+2 DATE 1 SEP 2006
+1 _CURRENT Y
+0 TRLR
