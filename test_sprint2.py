@@ -1,34 +1,29 @@
-from The_Real_Project03 import *
 import unittest
+import The_Real_Project03
 
+class Test_US17_US22(unittest.TestCase):
+    def test_US_17_US22(self):
+        output = The_Real_Project03.main()
+        individual_dict = output[0]
+        family_dict = output[1]
 
-class GedTest(unittest.TestCase):
+        expected_individual = [['@I1@', 'Mars /Hulu/', 'M', '1990-1-1', 'NA', '@F1@', '@F3@'],
+                               ['@I2@', 'Jose /Hulu/', 'M', '1970-1-1', '1995-1-1', 'NA', '@F1@'],
+                               ['@I3@', 'MarriedToChild /Hulu/', 'F', '1970-1-1', 'NA', 'NA', '@F3@'],
+                               ['@I4@', 'SameID2 /Hulu/', 'F', '1992-1-1', 'NA', '@F1@', 'NA']]
+        expected_family = [['@F1@', 'NA', '@I2@', '@I3@', {'@I1@', '@I4@', '@I5@'}, 'NA'],
+                           ['@F3@', 'NA', '@I1@', '@I3@', 'NA', 'NA']]
+        actual_individual = []
+        actual_family = []
 
-    def setUp(self):
-        file_path = 'JM.ged'
+        for key, value in individual_dict.items():
+            actual_individual.append([key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams])
+        for key, value in family_dict.items():
+            actual_family.append([key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day()])
 
-        individuals = {}
-        families = {}
-
-        with open(file_path, 'r') as file:
-            unfiltered_file = file.readlines()
-
-            filter_file(unfiltered_file, individuals, families)
-
-        individual_dict = {}
-        family_dict = {}
-
-        raw_individuals_to_structured_dict(individuals, individual_dict)
-        raw_families_to_structured_dict(families, family_dict)
-
-        self.US17 = no_marriage_to_children(family_dict)
-
-    def test_US17(self):
-        exp = {'@F2@': ['@F2@', '@F2@', '@F2@']}
-        rlt = self.US17
-        self.assertEqual(exp, rlt)
+        self.assertEqual(expected_family, actual_family)
+        self.assertEqual(expected_individual, actual_individual)
 
 
 if __name__ == '__main__':
-    unittest.main()
-
+    unittest.main(exit=False, verbosity=2)
