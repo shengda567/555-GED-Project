@@ -281,7 +281,7 @@ def parents_not_too_old(family_dict, individual_dict):
         if individual.famc != 'NA':
             dad = family_dict[individual.famc].husb
             mom = family_dict[individual.famc].wife
-            
+
             how_much_older_is_dad = age_calculator(individual.birt, individual_dict[dad].birt)
             how_much_older_is_mom = age_calculator(individual.birt, individual_dict[mom].birt)
             if how_much_older_is_dad != 'NA' and how_much_older_is_dad >= 80:
@@ -292,7 +292,7 @@ def parents_not_too_old(family_dict, individual_dict):
                 individual_dict[mom].birt.setNA()
 
 """Sprint 2"""
-"""User Story 13: Siblings spacing"""    
+"""User Story 13: Siblings spacing"""
 def siblings_spacing(family_dict, individual_dict):
     for id, individual in individual_dict.items():
         if individual.famc != 'NA':
@@ -323,6 +323,7 @@ def mutiple_birth(family_dict, individual_dict):
                         birth += 1
                     if birth > 5:
                         ErrorCollector.error_list.append(f"ERROR: US14: {id} has too many siblings born at the same time")
+                        break
 
 """Shengda's Code Goes Here"""
 '''Sprint 1'''
@@ -388,7 +389,7 @@ def main():
 
     '''Haoran Sprint 1: US11, US12'''
     #no_bigamy(family_dict, individual_dict) # US11
-    parents_not_too_old(family_dict, individual_dict) # US12
+    #parents_not_too_old(family_dict, individual_dict) # US12
     siblings_spacing(family_dict, individual_dict) #US13
     mutiple_birth(family_dict, individual_dict)
 
@@ -407,6 +408,8 @@ def main():
     for error in ErrorCollector.error_list:
         print(error)
 
+    return [individual_dict, family_dict, ErrorCollector.error_list]
+
 
 
 """Run Main Function"""
@@ -415,7 +418,3 @@ if __name__ == '__main__':
 
 
 # In[ ]:
-
-
-
-
