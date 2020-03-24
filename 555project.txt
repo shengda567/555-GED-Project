@@ -1,0 +1,35 @@
++-------+----------------------+--------+-----------+-----+-------+-----------+-------+--------+
+|   ID  |         Name         | Gender |  Birthday | Age | Alive |   Death   | Child | Spouse |
++-------+----------------------+--------+-----------+-----+-------+-----------+-------+--------+
+|  @I1@ |   Hercule /Poirot/   |   M    |  1972-9-5 |  47 |  True |     NA    |  @F3@ |  @F1@  |
+|  @I2@ | Jules-Louis /Poirot/ |   M    | 1928-8-15 |  91 | False |  1993-3-5 |   NA  |  @F3@  |
+|  @I3@ |  Godelieve /Poirot/  |   F    | 1925-1-11 |  95 | False | 1998-11-7 |   NA  |  @F3@  |
+|  @I4@ |  Agatha /Christie/   |   F    | 1999-1-29 |  21 |  True |     NA    |  @F4@ |   NA   |
+|  @I5@ |  Felicity /Poirot/   |   F    |  1972-3-7 |  48 |  True |     NA    |   NA  |  @F1@  |
+|  @I6@ |    Conan /Poirot/    |   M    |  2008-2-9 |  12 |  True |     NA    |  @F5@ |   NA   |
+|  @I7@ |   Ariadne /Poirot/   |   F    | 1972-7-17 |  47 |  True |     NA    |  @F3@ |  @F5@  |
+|  @I8@ |  Arthur /Hastings/   |   M    | 1973-4-28 |  46 | False | 2005-4-13 |   NA  |  @F4@  |
+|  @I9@ |    Joseph /Bell/     |   M    | 1978-5-28 |  41 |  True |     NA    |   NA  |  @F5@  |
+| @I10@ |  Herculee /Poirot/   |   M    |  1973-9-5 |  46 |  True |     NA    |  @F3@ |   NA   |
+| @I11@ |  Herculed /Poirot/   |   M    |  1973-9-5 |  46 |  True |     NA    |  @F3@ |   NA   |
+| @I12@ |  Herculec /Poirot/   |   M    |  1973-9-5 |  46 |  True |     NA    |  @F3@ |   NA   |
+| @I13@ |  Herculea /Poirot/   |   M    |  1973-9-5 |  46 |  True |     NA    |  @F3@ |   NA   |
+| @I14@ |  Herculeb /Poirot/   |   M    |  1973-9-6 |  46 |  True |     NA    |  @F3@ |   NA   |
+| @I15@ |  Herculeb /Poirot/   |   M    |  1973-9-6 |  46 |  True |     NA    |  @F3@ |   NA   |
++-------+----------------------+--------+-----------+-----+-------+-----------+-------+--------+
++------+------------+----------+------------+----------------------+---------+--------------------+------------------------------------------------------------------------+
+|  ID  |  Married   | Divorced | Husband ID |     Husband Name     | Wife ID |     Wife Name      |                                Children                                |
++------+------------+----------+------------+----------------------+---------+--------------------+------------------------------------------------------------------------+
+| @F1@ | 2005-4-24  |    NA    |    @I1@    |   Hercule /Poirot/   |   @I5@  | Felicity /Poirot/  |                                   NA                                   |
+| @F3@ | 1958-8-15  |    NA    |    @I2@    | Jules-Louis /Poirot/ |   @I3@  | Godelieve /Poirot/ | {'@I7@', '@I12@', '@I10@', '@I1@', '@I13@', '@I15@', '@I14@', '@I11@'} |
+| @F4@ | 1998-10-26 |    NA    |    @I8@    |  Arthur /Hastings/   |   @I7@  |  Ariadne /Poirot/  |                                {'@I4@'}                                |
+| @F5@ |  2006-9-1  |    NA    |    @I9@    |    Joseph /Bell/     |   @I7@  |  Ariadne /Poirot/  |                                {'@I6@'}                                |
++------+------------+----------+------------+----------------------+---------+--------------------+------------------------------------------------------------------------+
+ERROR: US13: @I1@ has a sibling whose birth date is too close
+ERROR: US13: @I7@ has a sibling whose birth date is too close
+ERROR: US14: @I10@ has too many siblings born at the same time
+ERROR: US14: @I11@ has too many siblings born at the same time
+ERROR: US14: @I12@ has too many siblings born at the same time
+ERROR: US14: @I13@ has too many siblings born at the same time
+ERROR: US14: @I14@ has too many siblings born at the same time
+ERROR: US14: @I15@ has too many siblings born at the same time
