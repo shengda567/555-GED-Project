@@ -211,24 +211,6 @@ def birth_before_marriage(individual_dict, family_dict):
                     ErrorCollector.error_list.append(f"ERROR: US02: {key} has a wedding date {family_dict[value.fams].marr.snake_year_month_day()} occurs before birthday {value.birt.snake_year_month_day()}")
                     family_dict[value.fams].marr.setNA()
 
-'''Sprint 2'''
-'''User Story 03: Birth Before Death'''
-def birth_before_death(individual_dict):
-    for id, value in individual_dict.items():
-        if value.birt.snake_year_month_day() != 'NA' and value.deat.snake_year_month_day() != 'NA':
-            if age_calculator(value.deat, value.birt) <= 0:
-                ErrorCollector.error_list.append(f"ERROR: US03: {id} has a birthday {value.birt.snake_year_month_day()} that occurred after death date {value.deat.snake_year_month_day()}. Birthday was set to NA.")
-                value.birt.setNA()
-
-'''User Story 08: Birth Before Marriage Of Parents'''
-def birth_before_marriage_of_parents(individual_dict, family_dict):
-    for id, value in individual_dict.items():
-        if value.famc != 'NA':
-            if family_dict[value.famc].marr != 'NA':
-                if age_calculator(value.birt, family_dict[value.famc].marr) != 'NA' and age_calculator(value.birt, family_dict[value.famc].marr) < 0:
-                    ErrorCollector.error_list.append(f"ERROR: US08: {id} has a birth date {value.birt.snake_year_month_day()} that's earlier than parents' wedding date {family_dict[value.famc].marr.snake_year_month_day()}. Birthday was set to NA.")
-                    value.birt.setNA()
-
 
 """Jigar's Code Goes Here"""
 '''Sprint 1'''
@@ -310,6 +292,62 @@ def marriage_before_death(family_dict, individual_dict):
 def less_than_150_years_old(family_dict, individual_dict):
     pass
 
+"""Shengda's Code Goes Here"""
+'''Sprint 2'''
+'''User Story 10: Marriage after 14'''
+def marriage_after_14(family_dict, individual_dict):
+    US10_report = {}
+    for fam, family in family_dict.items():
+        #if individual.famc != 'NA':
+        husband_ID = family.husb
+        wife_ID = family.wife
+        marriage_date = family.marr.snake_year_month_day()
+        if marriage_date != 'NA':
+            husband_birth_day = individual_dict[husband_ID].birt.snake_year_month_day()
+            wife_birth_day = individual_dict[wife_ID].birt.snake_year_month_day()
+
+            if calculate_year_dif(husband_birth_day, marriage_date) >= 14\
+                and calculate_year_dif(wife_birth_day, marriage_date) >= 14:
+                US10_report[fam] = True
+            else:
+                US10_report[fam] = [marriage_date, husband_birth_day, wife_birth_day]
+    for id, boolean in US10_report.items():
+        if boolean != True:
+            print(f"ERROR: FAMILY: US10: Family ID: {id}, marriage date is {boolean[0]}, "
+                  f"husband birth day is {boolean[1]}, wife birth day is {boolean[2]},"
+                  f"married before 14 years old.")
+    #print(US10_report)
+    return US10_report
+
+#User Story 10 helper
+def calculate_year_dif(one_date_string, another_date_string):
+    if one_date_string != 'NA' and another_date_string != 'NA':
+        year1, month1, day1 = one_date_string.split("-")
+        year2, month2, day2 = another_date_string.split("-")
+        year_dif = int(year2) - int(year1) - ((int(month2), int(day2)) < (int(month1), int(day1)))
+        return year_dif
+    return True
+
+'''User Story 31: List living single'''
+def list_living_single(family_dict, individual_dict):
+    US31_report = {}
+
+    for indi, individual in individual_dict.items():
+        indi_birth_date = individual.birt.snake_year_month_day()
+        indi_death_date = individual.deat.snake_year_month_day()
+        indi_spouse = individual.fams
+
+        if indi_birth_date != 'NA' and indi_death_date == 'NA':
+            if age_calculator(date.today(), individual.birt) >= 30 and indi_spouse == 'NA':
+                US31_report[indi] = [age_calculator(date.today(), individual.birt), indi_spouse]
+            else:
+                US31_report[indi] = False
+    for id, boolean in US31_report.items():
+        if boolean != False:
+            print(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
+                  f"who is living people over 30 but have never been married")
+    #print(US31_report)
+    return US31_report
 
 """Xiangyu's Code Goes Here"""
 '''Sprint 1'''
@@ -320,7 +358,43 @@ def fewer_than_15_siblings(family_dict, individual_dict):
 def unique_families_by_spouses(family_dict, individual_dict):
     pass
 
+"""US32 List multiple births"""
+def list_multiple_births(individual_dict):
+    US32_report = {}
+    for id, individual in individual_dict.items():
+        birth_date = individual.birt.snake_year_month_day()
+        US32_report.setdefault(birth_date, []).append(id)
+    for birth_date in US32_report:
+        if len(US32_report[birth_date]) > 1:
+            print(f"birth day {birth_date} has multiple births {US32_report[birth_date]}")
+    print("us32", US32_report)
+    return US32_report
 
+"""Corresponding entries"""
+def corresponding_entries(family_dict, individual_dict):
+    US26_report ={}
+    for id, family in family_dict.items():
+        husband_id = family.husb
+        wife_id = family.wife
+        children = family.chil
+        print("ddddd", children)
+        if individual_dict[husband_id].fams != id:
+            print(f"ERROR: family id is {id}, wife is {wife_id}, husband is {husband_id} in family record, "
+                  f"but in individual record, individual {husband_id} is in {individual_dict[husband_id].fams} family")
+            US26_report.setdefault(id, []).append(individual_dict[husband_id].fams)
+        if individual_dict[wife_id].fams != id:
+            print(f"ERROR: family id is {id}, wife is {wife_id}, husband is {husband_id} in family record, "
+                  f"but in individual record, individual {wife_id} is in {individual_dict[husband_id].fams} family")
+            US26_report.setdefault(id, []).append(individual_dict[wife_id].fams)
+        if children != 'NA':
+            for child in children:
+                if child != 'NA' and individual_dict[child].famc != 'NA':
+                    if individual_dict[child].famc != id:
+                        print(f"ERROR: family id is {id}, child {child} in family record, "
+                              f"but in individual record, child {child} is in {individual_dict[child].famc} family")
+                US26_report.setdefault(id, []).append(individual_dict[child].famc)
+    print("us26", US26_report)
+    return US26_report
 """Main Function"""
 def main():
     '''Operations in Order'''
@@ -330,7 +404,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Sprint-2-HanqingLiu.ged'
+    file_path = 'Sprint-1-test.ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
@@ -353,14 +427,13 @@ def main():
     '''the next 2 lines fill in the previous 2 lines individual_dict and family_dict'''
     raw_individuals_to_structured_dict(individuals, individual_dict)
     raw_families_to_structured_dict(families, family_dict)
+    print(individual_dict)
+    print(family_dict)
 
     """User Stories Goes Here"""
     '''Hanqing Sprint 1: US01, US02'''
     # dates_before_current_date(individual_dict, family_dict) # US01
     # birth_before_marriage(individual_dict, family_dict) # US02
-    '''Hanqing Sprint 2: US03, US08'''
-    birth_before_death(individual_dict)
-    birth_before_marriage_of_parents(individual_dict, family_dict)
 
     '''Jigar Sprint 1: US04, US06'''
     # marriage_before_divorce(family_dict) # US04
@@ -370,12 +443,18 @@ def main():
     # no_bigamy(family_dict, individual_dict) # US11
     # parents_not_too_old(family_dict, individual_dict) # US12
 
+    '''Shengda Sprint 2: US10, US31'''
+    marriage_after_14(family_dict, individual_dict)
+    list_living_single(family_dict, individual_dict)
 
+    '''Xiangyu Sprint 2: US10, US31'''
+    list_multiple_births(individual_dict)
+    corresponding_entries(family_dict, individual_dict)
     '''Uncomment these if you want to see the individual and family objects created from Individual and Family class'''
-    # for key, value in individual_dict.items():
-    #     print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
-    # for key, value in family_dict.items():
-    #     print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
+    for key, value in individual_dict.items():
+        print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
+    for key, value in family_dict.items():
+        print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
 
     # 4. Draw Pretty Tables
     draw_individual_prettytable(individual_dict)
@@ -385,11 +464,8 @@ def main():
     for error in ErrorCollector.error_list:
         print(error)
 
-    # 6. Export for testing
-
-    return [individual_dict, family_dict]
 
 
 """Run Main Function"""
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
