@@ -327,10 +327,11 @@ def less_than_150_years_old(individual_dict):
             else:
                 US07_report[id] = True
         else:
-            if age_calculator(date.today(), individual.birt) > 150:
-                US07_report[id] = False
-            else:
-                US07_report[id] = True
+            if age_calculator(date.today(), individual.birt) != 'NA':
+                if age_calculator(date.today(), individual.birt) > 150:
+                    US07_report[id] = False
+                else:
+                    US07_report[id] = True
     for id, boolean in US07_report.items():
         if boolean == False:
             ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US07: line 202: Individual ID: {id} "
@@ -415,7 +416,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Sprint-1-test.ged'
+    file_path = '555Project(updates-often).ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
