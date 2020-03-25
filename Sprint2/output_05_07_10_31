@@ -6,20 +6,20 @@ C:\Users\PC\AppData\Local\Programs\Python\Python36\python.exe E:/SWW555/7/The_Re
 |  @I2@ |    NormalWife /Project555/     |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F1@  |
 |  @I3@ |   NormalFather /Project555/    |   M    | 1930-1-1 |  90 |  True |    NA    |  @F3@ |  @F2@  |
 |  @I4@ |    NomalMother /Project555/    |   F    | 1930-1-1 |  90 |  True |    NA    |  @F4@ |  @F2@  |
-|  @I5@ |       US01 /Project555/        |   M    | 2030-1-1 | -10 |  True |    NA    |  @F2@ |   NA   |
+|  @I5@ |       US01 /Project555/        |   M    |    NA    |  NA |   NA  |    NA    |  @F2@ |   NA   |
 |  @I6@ |       US02 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ |  @F5@  |
 |  @I7@ |    US02Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F5@  |
-|  @I8@ |       US03 /Project555/        |   M    | 1960-1-1 |  60 | False | 1959-1-1 |  @F2@ |   NA   |
-|  @I9@ |       US08 /Project555/        |   M    | 1945-1-1 |  75 |  True |    NA    |  @F2@ |   NA   |
+|  @I8@ |       US03 /Project555/        |   M    |    NA    |  NA | False | 1959-1-1 |  @F2@ |   NA   |
+|  @I9@ |       US08 /Project555/        |   M    |    NA    |  NA |   NA  |    NA    |  @F2@ |   NA   |
 | @I10@ |       US04 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ |  @F6@  |
 | @I11@ |    US04Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F6@  |
 | @I12@ |       US06 /Project555/        |   M    | 1960-1-1 |  60 | False | 1990-1-1 |  @F2@ |  @F7@  |
 | @I13@ |    US06Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F7@  |
-| @I14@ |       US17 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ | @F999@ |
+| @I14@ |       US17 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ |   NA   |
 | @I15@ |    US17Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F8@  |
-| @I16@ | US17ChildPartner /Project555/  |   F    | 1990-1-1 |  30 |  True |    NA    |  @F8@ | @F999@ |
-| @I17@ |       US11 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ | @F10@  |
-| @I18@ |    US11Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  | @F10@  |
+| @I16@ | US17ChildPartner /Project555/  |   F    | 1990-1-1 |  30 |  True |    NA    |  @F8@ |   NA   |
+| @I17@ |       US11 /Project555/        |   M    | 1960-1-1 |  60 |  True |    NA    |  @F2@ |  @F9@  |
+| @I18@ |    US11Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |   NA   |
 | @I19@ |  US11SecPartner /Project555/   |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  |  @F9@  |
 | @I20@ |      US12Dad /Project555/      |   M    | 1840-1-1 | 180 | False | 1931-1-1 |   NA  |  @F4@  |
 | @I21@ |      US12Mom /Project555/      |   F    | 1850-1-1 | 170 | False | 1931-1-1 |   NA  |  @F4@  |
@@ -27,8 +27,8 @@ C:\Users\PC\AppData\Local\Programs\Python\Python36\python.exe E:/SWW555/7/The_Re
 | @I23@ |    US05Partner /Project555/    |   F    | 1960-1-1 |  60 |  True |    NA    |   NA  | @F11@  |
 | @I24@ |       US072 /Project555/       |   M    | 1700-1-1 | 320 |  True |    NA    |   NA  |  @F3@  |
 | @I25@ |       US07 /Project555/        |   F    | 1700-1-1 | 320 |  True |    NA    |   NA  |  @F3@  |
-| @I26@ |      US1501 /Project555/       |   M    |    NA    |  NA |   NA  |    NA    |  @F1@ |   NA   |
-| @I27@ |      US1502 /Project555/       |   M    |    NA    |  NA |   NA  |    NA    |  @F1@ |   NA   |
+| @I26@ |      US1501 /Project555/       |   M    | 1990-1-1 |  30 |  True |    NA    |  @F1@ |   NA   |
+| @I27@ |      US1502 /Project555/       |   M    | 1990-2-1 |  30 |  True |    NA    |  @F1@ |   NA   |
 | @I28@ |      US1503 /Project555/       |   M    |    NA    |  NA |   NA  |    NA    |  @F1@ |   NA   |
 | @I29@ |      US1504 /Project555/       |   M    |    NA    |  NA |   NA  |    NA    |  @F1@ |   NA   |
 | @I30@ |      US1505 /Project555/       |   M    |    NA    |  NA |   NA  |    NA    |  @F1@ |   NA   |
@@ -55,36 +55,56 @@ C:\Users\PC\AppData\Local\Programs\Python\Python36\python.exe E:/SWW555/7/The_Re
 | @I51@ |       US32 /Project555/        |   M    | 1961-1-1 |  59 |  True |    NA    |  @F2@ |   NA   |
 | @I52@ |       US222 /Project555/       |   M    | 1990-1-1 |  30 |  True |    NA    |   NA  |   NA   |
 +-------+--------------------------------+--------+----------+-----+-------+----------+-------+--------+
-+--------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-|   ID   | Married  | Divorced | Husband ID |          Husband Name         | Wife ID |           Wife Name            |                                                                     Children                                                                     |
-+--------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-|  @F1@  |    NA    |    NA    |    @I1@    | CenterOfUniverse /Project555/ |   @I2@  |    NormalWife /Project555/     | {'@I41@', '@I36@', '@I37@', '@I35@', '@I32@', '@I28@', '@I38@', '@I30@', '@I33@', '@I40@', '@I27@', '@I26@', '@I39@', '@I34@', '@I29@', '@I31@'} |
-|  @F2@  | 1950-1-1 |    NA    |    @I3@    |   NormalFather /Project555/   |   @I4@  |    NomalMother /Project555/    |                 {'@I17@', '@I51@', '@I12@', '@I22@', '@I1@', '@I10@', '@I42@', '@I9@', '@I14@', '@I5@', '@I8@', '@I50@', '@I6@'}                 |
-|  @F3@  |    NA    |    NA    |   @I24@    |       US072 /Project555/      |  @I25@  |       US07 /Project555/        |                                                                     {'@I3@'}                                                                     |
-|  @F4@  |    NA    |    NA    |   @I20@    |      US12Dad /Project555/     |  @I21@  |      US12Mom /Project555/      |                                                                     {'@I4@'}                                                                     |
-|  @F5@  | 1950-1-1 |    NA    |    @I6@    |       US02 /Project555/       |   @I7@  |    US02Partner /Project555/    |                                                                        NA                                                                        |
-|  @F6@  | 1980-1-1 | 1970-1-1 |   @I10@    |       US04 /Project555/       |  @I11@  |    US04Partner /Project555/    |                                                                        NA                                                                        |
-|  @F7@  | 1980-1-1 | 2000-1-1 |   @I12@    |       US06 /Project555/       |  @I13@  |    US06Partner /Project555/    |                                                                        NA                                                                        |
-|  @F8@  | 1970-1-1 |    NA    |   @I14@    |       US17 /Project555/       |  @I15@  |    US17Partner /Project555/    |                                                                    {'@I16@'}                                                                     |
-|  @F9@  | 1980-1-1 |    NA    |   @I17@    |       US11 /Project555/       |  @I19@  |  US11SecPartner /Project555/   |                                                                        NA                                                                        |
-| @F10@  | 1979-1-1 |    NA    |   @I17@    |       US11 /Project555/       |  @I18@  |    US11Partner /Project555/    |                                                                        NA                                                                        |
-| @F11@  | 1980-1-1 |    NA    |   @I22@    |       US05 /Project555/       |  @I23@  |    US05Partner /Project555/    |                                                                        NA                                                                        |
-| @F12@  |    NA    |    NA    |   @I42@    |    NormalSon2 /Project555/    |  @I43@  | NormalSon2Partner /Project555/ |                                                       {'@I44@', '@I45@', '@I48@', '@I52@'}                                                       |
-| @F13@  | 2010-1-1 |    NA    |   @I44@    |       US24 /Project555/       |  @I46@  |    US24Partner /Project555/    |                                                                        NA                                                                        |
-| @F14@  | 2010-1-1 |    NA    |   @I45@    |       US242 /Project555/      |  @I47@  |    US24Partner /Project555/    |                                                                        NA                                                                        |
-| @F15@  | 2000-1-1 |    NA    |   @I48@    |       US10 /Project555/       |  @I49@  |    US10Partner /Project555/    |                                                                        NA                                                                        |
-| @F999@ | 1980-1-1 |    NA    |   @I14@    |       US17 /Project555/       |  @I16@  | US17ChildPartner /Project555/  |                                                                        NA                                                                        |
-+--------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
++-------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+|   ID  | Married  | Divorced | Husband ID |          Husband Name         | Wife ID |           Wife Name            |                                                                     Children                                                                     |
++-------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+|  @F1@ |    NA    |    NA    |    @I1@    | CenterOfUniverse /Project555/ |   @I2@  |    NormalWife /Project555/     | {'@I31@', '@I39@', '@I37@', '@I30@', '@I28@', '@I26@', '@I41@', '@I36@', '@I34@', '@I32@', '@I33@', '@I27@', '@I29@', '@I40@', '@I35@', '@I38@'} |
+|  @F2@ | 1950-1-1 |    NA    |    @I3@    |   NormalFather /Project555/   |   @I4@  |    NomalMother /Project555/    |                 {'@I1@', '@I12@', '@I8@', '@I17@', '@I50@', '@I10@', '@I14@', '@I9@', '@I5@', '@I22@', '@I6@', '@I51@', '@I42@'}                 |
+|  @F3@ |    NA    |    NA    |   @I24@    |       US072 /Project555/      |  @I25@  |       US07 /Project555/        |                                                                     {'@I3@'}                                                                     |
+|  @F4@ |    NA    |    NA    |   @I20@    |      US12Dad /Project555/     |  @I21@  |      US12Mom /Project555/      |                                                                     {'@I4@'}                                                                     |
+|  @F5@ |    NA    |    NA    |    @I6@    |       US02 /Project555/       |   @I7@  |    US02Partner /Project555/    |                                                                        NA                                                                        |
+|  @F6@ | 1980-1-1 |    NA    |   @I10@    |       US04 /Project555/       |  @I11@  |    US04Partner /Project555/    |                                                                        NA                                                                        |
+|  @F7@ | 1980-1-1 |    NA    |   @I12@    |       US06 /Project555/       |  @I13@  |    US06Partner /Project555/    |                                                                        NA                                                                        |
+|  @F8@ | 1970-1-1 |    NA    |   @I14@    |       US17 /Project555/       |  @I15@  |    US17Partner /Project555/    |                                                                    {'@I16@'}                                                                     |
+|  @F9@ | 1980-1-1 |    NA    |   @I17@    |       US11 /Project555/       |  @I19@  |  US11SecPartner /Project555/   |                                                                        NA                                                                        |
+| @F11@ | 1980-1-1 |    NA    |   @I22@    |       US05 /Project555/       |  @I23@  |    US05Partner /Project555/    |                                                                        NA                                                                        |
+| @F12@ |    NA    |    NA    |   @I42@    |    NormalSon2 /Project555/    |  @I43@  | NormalSon2Partner /Project555/ |                                                       {'@I48@', '@I45@', '@I44@', '@I52@'}                                                       |
+| @F13@ | 2010-1-1 |    NA    |   @I44@    |       US24 /Project555/       |  @I46@  |    US24Partner /Project555/    |                                                                        NA                                                                        |
+| @F14@ | 2010-1-1 |    NA    |   @I45@    |       US242 /Project555/      |  @I47@  |    US24Partner /Project555/    |                                                                        NA                                                                        |
+| @F15@ | 2000-1-1 |    NA    |   @I48@    |       US10 /Project555/       |  @I49@  |    US10Partner /Project555/    |                                                                        NA                                                                        |
++-------+----------+----------+------------+-------------------------------+---------+--------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+ERROR: US01: Individual @I5@ has a birthday 2030-1-1 occurs in the future. Birthday was set to NA.
+ERROR: US02: Individual @I6@ has a wedding date 1950-1-1 occurs before birthday 1960-1-1. Wedding date was set to NA.
+ERROR: US02: Individual @I16@ has a wedding date 1980-1-1 occurs before birthday 1990-1-1. Wedding date was set to NA.
+ERROR: US03: Individual @I8@ has a birthday 1960-1-1 that occurred after death date 1959-1-1. Birthday was set to NA.
+ERROR: US08: Individual @I9@ has a birth date 1945-1-1 that's earlier than parents' wedding date 1950-1-1. Birthday was set to NA.
+ERROR: US04: Family @F6@ has a divorce date 1970-1-1 occurs before wedding date 1980-1-1. Divorce date was set to NA.
+ERROR: US06: Family @F7@ has a divorce date 2000-1-1 occurs after husband's @I12@ death at 1990-1-1. Divorce date was set to NA.
+ERROR: US17: Individual @I16@ is married to her father @I14@ which is illegal. Family eliminated.
+ERROR: US22: Individual @I52@ already exists and will override previous data
+ERROR: US11: @I17@ committed bigamy and the second family @F10@ will be eliminated.
+ERROR: US13: @I26@ has a sibling whose birth date is too close
+ERROR: US13: @I27@ has a sibling whose birth date is too close
+ERROR: US14: @I1@ has too many siblings born at the same time
+ERROR: US14: @I6@ has too many siblings born at the same time
+ERROR: US14: @I10@ has too many siblings born at the same time
+ERROR: US14: @I12@ has too many siblings born at the same time
+ERROR: US14: @I14@ has too many siblings born at the same time
+ERROR: US14: @I17@ has too many siblings born at the same time
+ERROR: US14: @I22@ has too many siblings born at the same time
+ERROR: US14: @I42@ has too many siblings born at the same time
 ERROR: FAMILY: US05: Family ID: @F11@ Marriage occur before death of either spouse.
 ERROR: INDIVIDUAL: US07: Individual ID: @I20@ Death should be less than 150 years after birth for dead people, and current date should be less than 150 years after birth for all living people
 ERROR: INDIVIDUAL: US07: Individual ID: @I21@ Death should be less than 150 years after birth for dead people, and current date should be less than 150 years after birth for all living people
 ERROR: INDIVIDUAL: US07: Individual ID: @I24@ Death should be less than 150 years after birth for dead people, and current date should be less than 150 years after birth for all living people
 ERROR: INDIVIDUAL: US07: Individual ID: @I25@ Death should be less than 150 years after birth for dead people, and current date should be less than 150 years after birth for all living people
-ERROR: FAMILY: US10: Family ID: @F5@, marriage date is 1950-1-1, husband birth day is 1960-1-1, wife birth day is 1960-1-1,married before 14 years old.
 ERROR: FAMILY: US10: Family ID: @F8@, marriage date is 1970-1-1, husband birth day is 1960-1-1, wife birth day is 1960-1-1,married before 14 years old.
 ERROR: FAMILY: US10: Family ID: @F15@, marriage date is 2000-1-1, husband birth day is 1990-1-1, wife birth day is 1990-1-1,married before 14 years old.
-ERROR: FAMILY: US10: Family ID: @F999@, marriage date is 1980-1-1, husband birth day is 1960-1-1, wife birth day is 1990-1-1,married before 14 years old.
-ERROR: INDIVIDUAL: US31: Individual ID: @I9@, Age is 75, FamilyID is NA, who is living people over 30 but have never been married
+ERROR: INDIVIDUAL: US31: Individual ID: @I14@, Age is 60, FamilyID is NA, who is living people over 30 but have never been married
+ERROR: INDIVIDUAL: US31: Individual ID: @I16@, Age is 30, FamilyID is NA, who is living people over 30 but have never been married
+ERROR: INDIVIDUAL: US31: Individual ID: @I18@, Age is 60, FamilyID is NA, who is living people over 30 but have never been married
+ERROR: INDIVIDUAL: US31: Individual ID: @I26@, Age is 30, FamilyID is NA, who is living people over 30 but have never been married
+ERROR: INDIVIDUAL: US31: Individual ID: @I27@, Age is 30, FamilyID is NA, who is living people over 30 but have never been married
 ERROR: INDIVIDUAL: US31: Individual ID: @I50@, Age is 40, FamilyID is NA, who is living people over 30 but have never been married
 ERROR: INDIVIDUAL: US31: Individual ID: @I51@, Age is 59, FamilyID is NA, who is living people over 30 but have never been married
 ERROR: INDIVIDUAL: US31: Individual ID: @I52@, Age is 30, FamilyID is NA, who is living people over 30 but have never been married
