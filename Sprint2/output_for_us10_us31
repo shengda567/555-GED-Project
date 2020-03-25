@@ -1,4 +1,0 @@
-ERROR: FAMILY: US10: Family ID: @F1@, marriage date is 1988-1-1, husband birth day is 1990-1-1, wife birth day is 1991-1-1,married before 14 years old.
-ERROR: FAMILY: US10: Family ID: @F4@, marriage date is 2000-1-1, husband birth day is 1991-1-1, wife birth day is 1990-1-1,married before 14 years old.
-ERROR: FAMILY: US10: Family ID: @F6@, marriage date is 1993-1-1, husband birth day is 1992-1-1, wife birth day is 1992-1-1,married before 14 years old.
-ERROR: INDIVIDUAL: US31: Individual ID: @I11@, Age is 220, FamilyID is NA, who is living people over 30 but have never been married
