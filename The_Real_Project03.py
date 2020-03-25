@@ -344,7 +344,7 @@ def list_living_single(family_dict, individual_dict):
                 US31_report[indi] = False
     for id, boolean in US31_report.items():
         if boolean != False:
-            print(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
+            ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
                   f"who is living people over 30 but have never been married")
     #print(US31_report)
     return US31_report
@@ -367,7 +367,12 @@ def list_multiple_births(individual_dict):
     for birth_date in US32_report:
         if len(US32_report[birth_date]) > 1:
             print(f"birth day {birth_date} has multiple births {US32_report[birth_date]}")
-    print("us32", US32_report)
+    for id, boolean in US32_report.items():
+        if boolean != False:
+            ErrorCollector.error_list.append(
+                f"ERROR: INDIVIDUAL: US31: Individual ID: {id} "
+                f"who are multiple biths")
+    #print("us32", US32_report)
     return US32_report
 
 """Corresponding entries"""
@@ -393,7 +398,12 @@ def corresponding_entries(family_dict, individual_dict):
                         print(f"ERROR: family id is {id}, child {child} in family record, "
                               f"but in individual record, child {child} is in {individual_dict[child].famc} family")
                 US26_report.setdefault(id, []).append(individual_dict[child].famc)
-    print("us26", US26_report)
+        for id, boolean in US26_report.items():
+            if boolean != False:
+                ErrorCollector.error_list.append(
+                    f"ERROR: family id is {id}, wife is {wife_id}, husband is {husband_id} in family record, "
+                    f"but in individual record, individual {wife_id} is in {individual_dict[husband_id].fams} family")
+    #print("us26", US26_report)
     return US26_report
 """Main Function"""
 def main():
@@ -404,7 +414,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Sprint-1-test.ged'
+    file_path = '555Project(updates-often).ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
