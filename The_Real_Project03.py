@@ -359,7 +359,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = '1.ged'
+    file_path = '555Project(updates-often).ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
