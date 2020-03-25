@@ -3,7 +3,7 @@ from The_Real_Project03 import *
 
 class Test_case_us10_us31(unittest.TestCase):
     def setUp(self):
-        file_path = 'Sprint-1-test.ged'
+        file_path = '555Project(updates-often).ged'
         '''Dictionaries of Individuals and Families'''
         individuals = {}
         families = {}
@@ -25,22 +25,27 @@ class Test_case_us10_us31(unittest.TestCase):
         self.US31_report = list_living_single(family_dict, individual_dict)
 
     def test_US10(self):
-        expect = {'@F1@': ['1988-1-1', '1990-1-1', '1991-1-1'],
-                  '@F2@': True, '@F4@': ['2000-1-1', '1991-1-1', '1990-1-1'],
-                  '@F5@': True, '@F6@': ['1993-1-1', '1992-1-1', '1992-1-1']}
+        expect = {'@F2@': True, '@F5@': ['1950-1-1', '1960-1-1', '1960-1-1'],
+                  '@F6@': True, '@F7@': True, '@F8@': ['1970-1-1', '1960-1-1', '1960-1-1'],
+                  '@F9@': True, '@F10@': True, '@F11@': True, '@F13@': True, '@F14@': True,
+                  '@F15@': ['2000-1-1', '1990-1-1', '1990-1-1'],
+                  '@F999@': ['1980-1-1', '1960-1-1', '1990-1-1']}
+
         actual = self.US10_report
         self.assertEqual(actual, expect)
 
     def test_US31(self):
         expect = {'@I1@': False, '@I2@': False, '@I3@': False,
                   '@I4@': False, '@I5@': False, '@I6@': False,
-                  '@I7@': False, '@I9@': False, '@I11@': [220, 'NA'],
-                  '@I12@': False, '@I13@': False, '@I14@': False,
+                  '@I7@': False, '@I9@': [75, 'NA'], '@I10@': False,
+                  '@I11@': False, '@I13@': False, '@I14@': False,
                   '@I15@': False, '@I16@': False, '@I17@': False,
-                  '@I18@': False, '@I19@': False, '@I20@': False,
-                  '@I21@': False, '@I22@': False, '@I23@': False,
-                  '@I24@': False, '@I25@': False, '@I26@': False,
-                  '@I27@': False, '@I28@': False}
+                  '@I18@': False, '@I19@': False, '@I23@': False,
+                  '@I24@': False, '@I25@': False, '@I42@': False,
+                  '@I43@': False, '@I44@': False, '@I45@': False,
+                  '@I46@': False, '@I47@': False, '@I48@': False,
+                  '@I49@': False, '@I50@': [40, 'NA'], '@I51@': [59, 'NA'],
+                  '@I52@': [30, 'NA']}
         actual = self.US31_report
         self.assertEqual(actual, expect)
 
