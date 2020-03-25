@@ -370,7 +370,7 @@ def list_multiple_births(individual_dict):
     for id, boolean in US32_report.items():
         if boolean != False:
             ErrorCollector.error_list.append(
-                f"ERROR: INDIVIDUAL: US31: Individual ID: {id} "
+                f"ERROR: INDIVIDUAL: US32: Individual ID: {id} "
                 f"who are multiple biths")
     #print("us32", US32_report)
     return US32_report
