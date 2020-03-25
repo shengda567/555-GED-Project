@@ -287,10 +287,57 @@ def parents_not_too_old(family_dict, individual_dict):
 '''Sprint 1'''
 '''User Story 05: Marriage Before Death'''
 def marriage_before_death(family_dict, individual_dict):
-    pass
+    US05_report = {}
+    for fam, family in family_dict.items():
+        husband_ID = family.husb
+        wife_ID = family.wife
+        marriage_date = family.marr.snake_year_month_day()
+        if husband_ID != 'NA' and wife_ID != 'NA':
+            husband_death_date = individual_dict[husband_ID].deat.snake_year_month_day()
+            wife_death_date = individual_dict[wife_ID].deat.snake_year_month_day()
+
+            if husband_death_date == 'NA' and wife_death_date == 'NA':
+                US05_report[fam] = True
+            elif husband_death_date != 'NA' and wife_death_date == 'NA':
+                US05_report[fam] = husband_death_date >= marriage_date
+            elif wife_death_date != 'NA' and husband_death_date == 'NA':
+                US05_report[fam] = wife_death_date >= marriage_date
+            else:
+                first_death_date = husband_death_date if husband_death_date <= wife_death_date else wife_death_date
+                US05_report[fam] = first_death_date >= marriage_date
+    for id, boolean in US05_report.items():
+        if boolean != True:
+            ErrorCollector.error_list.append(f"ERROR: FAMILY: US05: Family ID: {id} Marriage occur before death of either spouse.")
+    #print(US05_report)
+    return US05_report
+
 '''User Story 07: Less Than 150 Years Old'''
-def less_than_150_years_old(family_dict, individual_dict):
-    pass
+def less_than_150_years_old(individual_dict):
+    US07_report = {}
+    for id, individual in individual_dict.items():
+        indi_death_date = individual.deat.snake_year_month_day()
+        indi_birth_date = individual.birt.snake_year_month_day()
+
+        if indi_death_date != 'NA':
+            today = date.today()
+            year, month, day = indi_birth_date.split("-")
+            year_dif = today.year - int(year) - ((today.month, today.day) < (int(month), int(day)))
+            if year_dif > 150:
+                US07_report[id] = False
+            else:
+                US07_report[id] = True
+        else:
+            if age_calculator(date.today(), individual.birt) > 150:
+                US07_report[id] = False
+            else:
+                US07_report[id] = True
+    for id, boolean in US07_report.items():
+        if boolean == False:
+            ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US07: line 202: Individual ID: {id} "
+                                             f"Death should be less than 150 years after birth for dead people, "
+                                             f"and current date should be less than 150 years after birth for all living people")
+    #print(US07_report)
+    return US07_report
 
 """Shengda's Code Goes Here"""
 '''Sprint 2'''
@@ -313,7 +360,7 @@ def marriage_after_14(family_dict, individual_dict):
                 US10_report[fam] = [marriage_date, husband_birth_day, wife_birth_day]
     for id, boolean in US10_report.items():
         if boolean != True:
-            print(f"ERROR: FAMILY: US10: Family ID: {id}, marriage date is {boolean[0]}, "
+            ErrorCollector.error_list.append(f"ERROR: FAMILY: US10: Family ID: {id}, marriage date is {boolean[0]}, "
                   f"husband birth day is {boolean[1]}, wife birth day is {boolean[2]},"
                   f"married before 14 years old.")
     #print(US10_report)
@@ -344,7 +391,7 @@ def list_living_single(family_dict, individual_dict):
                 US31_report[indi] = False
     for id, boolean in US31_report.items():
         if boolean != False:
-            print(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
+            ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
                   f"who is living people over 30 but have never been married")
     #print(US31_report)
     return US31_report
@@ -391,8 +438,7 @@ def main():
     '''the next 2 lines fill in the previous 2 lines individual_dict and family_dict'''
     raw_individuals_to_structured_dict(individuals, individual_dict)
     raw_families_to_structured_dict(families, family_dict)
-    print(individual_dict)
-    print(family_dict)
+
 
     """User Stories Goes Here"""
     '''Hanqing Sprint 1: US01, US02'''
@@ -407,6 +453,10 @@ def main():
     # no_bigamy(family_dict, individual_dict) # US11
     # parents_not_too_old(family_dict, individual_dict) # US12
 
+    '''Shengda Sprint 1: US05, US07'''
+    marriage_before_death(family_dict, individual_dict)
+    less_than_150_years_old(individual_dict)
+
     '''Shengda Sprint 2: US10, US31'''
     marriage_after_14(family_dict, individual_dict)
     list_living_single(family_dict, individual_dict)
@@ -414,10 +464,10 @@ def main():
     '''Xiangyu Sprint 2: US10, US32'''
 
     '''Uncomment these if you want to see the individual and family objects created from Individual and Family class'''
-    for key, value in individual_dict.items():
-        print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
-    for key, value in family_dict.items():
-        print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
+    #for key, value in individual_dict.items():
+        #print(key, value.name, value.sex, value.birt.snake_year_month_day(), value.deat.snake_year_month_day(), value.famc, value.fams)
+    #for key, value in family_dict.items():
+        #print(key, value.marr.snake_year_month_day(), value.husb, value.wife, value.chil, value.div.snake_year_month_day())
 
     # 4. Draw Pretty Tables
     draw_individual_prettytable(individual_dict)
