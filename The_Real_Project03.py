@@ -253,7 +253,6 @@ def divorce_before_death(family_dict, individual_dict):
 def no_bigamy(family_dict, individual_dict):
     individual_family_dict = {}
     for key, value in family_dict.items():
-        print(key, value)
         if value.husb not in individual_family_dict:
             individual_family_dict[value.husb] = [key]
         else:
@@ -299,12 +298,15 @@ def siblings_spacing(family_dict, individual_dict):
             siblings = family_dict[individual.famc].chil
             if len(siblings) != 1:
                 for child in siblings:
-                    sib_age = date(int(individual_dict[child].birt.year), int(individual_dict[child].birt.month), int(individual_dict[child].birt.day))
-                    self_age = date(int(individual.birt.year), int(individual.birt.month), int(individual.birt.day))
-                    difference = abs(self_age - sib_age).days
-                    '''8 months is 240 days '''
-                    if difference > 1 and difference < 240:
-                        ErrorCollector.error_list.append(f"ERROR: US13: {id} has a sibling whose birth date is too close")
+                    if individual_dict[child].birt.year != 'NA' and individual_dict[child].birt.month != 'NA' and individual_dict[child].birt.day != 'NA':
+                        sib_age = date(int(float(individual_dict[child].birt.year)), int(float(individual_dict[child].birt.month)),
+                                       int(float(individual_dict[child].birt.day)))
+                        self_age = date(int(float(individual.birt.year)), int(float(individual.birt.month)),
+                                        int(float(individual.birt.day)))
+                        difference = abs(self_age - sib_age).days
+                        '''8 months is 240 days '''
+                        if difference > 1 and difference < 240:
+                            ErrorCollector.error_list.append(f"ERROR: US13: {id} has a sibling whose birth date is too close")
 
 
 """User story 14: Mutiple births <= 5"""
@@ -315,15 +317,18 @@ def mutiple_birth(family_dict, individual_dict):
             if len(siblings) > 5:
                 birth = 0
                 for child in siblings:
-                    sib_age = date(int(individual_dict[child].birt.year), int(individual_dict[child].birt.month), int(individual_dict[child].birt.day))
-                    self_age = date(int(individual.birt.year), int(individual.birt.month), int(individual.birt.day))
-                    difference = abs(self_age - sib_age).days
-                    '''8 months is 240 days '''
-                    if difference <= 1:
-                        birth += 1
-                    if birth > 5:
-                        ErrorCollector.error_list.append(f"ERROR: US14: {id} has too many siblings born at the same time")
-                        break
+                    if individual_dict[child].birt.year != 'NA' and individual_dict[child].birt.month != 'NA' and individual_dict[child].birt.day != 'NA':
+                        sib_age = date(int(float(individual_dict[child].birt.year)), int(float(individual_dict[child].birt.month)),
+                                       int(float(individual_dict[child].birt.day)))
+                        self_age = date(int(float(individual.birt.year)), int(float(individual.birt.month)),
+                                        int(float(individual.birt.day)))
+                        difference = abs(self_age - sib_age).days
+                        '''8 months is 240 days '''
+                        if difference <= 1:
+                            birth += 1
+                        if birth > 5:
+                            ErrorCollector.error_list.append(f"ERROR: US14: {id} has too many siblings born at the same time")
+                            break
 
 """Shengda's Code Goes Here"""
 '''Sprint 1'''
@@ -354,7 +359,7 @@ def main():
     # 4. Draw Pretty Tables
     # 5. Print all the errors
     #
-    file_path = 'Hercule-Poirot.ged'
+    file_path = '1.ged'
     #
     '''Dictionaries of Individuals and Families'''
     individuals = {}
@@ -388,8 +393,8 @@ def main():
     # divorce_before_death(family_dict, individual_dict) # US06
 
     '''Haoran Sprint 1: US11, US12'''
-    #no_bigamy(family_dict, individual_dict) # US11
-    #parents_not_too_old(family_dict, individual_dict) # US12
+    no_bigamy(family_dict, individual_dict) # US11
+    parents_not_too_old(family_dict, individual_dict) # US12
     siblings_spacing(family_dict, individual_dict) #US13
     mutiple_birth(family_dict, individual_dict)
 
@@ -415,6 +420,3 @@ def main():
 """Run Main Function"""
 if __name__ == '__main__':
     main()
-
-
-# In[ ]:
