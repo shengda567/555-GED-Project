@@ -350,6 +350,45 @@ def parents_not_too_old(family_dict, individual_dict):
                 ErrorCollector.error_list.append(f"ERROR: US12: {id} has a father who is {how_much_older_is_mom} older which is more than 60 and birthday is set to NA")
                 individual_dict[mom].birt.setNA()
 
+"""Sprint 2"""
+"""User Story 13: Siblings spacing"""
+def siblings_spacing(family_dict, individual_dict):
+    for id, individual in individual_dict.items():
+        if individual.famc != 'NA':
+            siblings = family_dict[individual.famc].chil
+            if len(siblings) != 1:
+                for child in siblings:
+                    if individual_dict[child].birt.year != 'NA' and individual_dict[child].birt.month != 'NA' and individual_dict[child].birt.day != 'NA' and individual.birt.year != 'NA' and individual.birt.month != 'NA' and individual.birt.day != 'NA':
+                        sib_age = date(int(float(individual_dict[child].birt.year)), int(float(individual_dict[child].birt.month)),
+                                       int(float(individual_dict[child].birt.day)))
+                        self_age = date(int(float(individual.birt.year)), int(float(individual.birt.month)),
+                                        int(float(individual.birt.day)))
+                        difference = abs(self_age - sib_age).days
+                        '''8 months is 240 days '''
+                        if difference > 1 and difference < 240:
+                            ErrorCollector.error_list.append(f"ERROR: US13: {id} has a sibling whose birth date is too close")
+
+
+"""User story 14: Mutiple births <= 5"""
+def mutiple_birth(family_dict, individual_dict):
+    for id, individual in individual_dict.items():
+        if individual.famc != 'NA':
+            siblings = family_dict[individual.famc].chil
+            if len(siblings) > 5:
+                birth = 0
+                for child in siblings:
+                    if individual_dict[child].birt.year != 'NA' and individual_dict[child].birt.month != 'NA' and individual_dict[child].birt.day != 'NA' and individual.birt.year != 'NA' and individual.birt.month != 'NA' and individual.birt.day != 'NA':
+                        sib_age = date(int(float(individual_dict[child].birt.year)), int(float(individual_dict[child].birt.month)),
+                                       int(float(individual_dict[child].birt.day)))
+                        self_age = date(int(float(individual.birt.year)), int(float(individual.birt.month)),
+                                        int(float(individual.birt.day)))
+                        difference = abs(self_age - sib_age).days
+                        '''8 months is 240 days '''
+                        if difference <= 1:
+                            birth += 1
+                        if birth > 5:
+                            ErrorCollector.error_list.append(f"ERROR: US14: {id} has too many siblings born at the same time")
+                            break
 
 """Shengda's Code Goes Here"""
 '''Sprint 1'''
@@ -421,9 +460,11 @@ def main():
     unique_ids(unfiltered_file) #US22
 
     '''Haoran Sprint 1: US11, US12'''
-    # no_bigamy(family_dict, individual_dict) # US11
-    # parents_not_too_old(family_dict, individual_dict) # US12
-
+    no_bigamy(family_dict, individual_dict) # US11
+    parents_not_too_old(family_dict, individual_dict) # US12
+    '''Haoran Sprint 1: US13, US14'''
+    siblings_spacing(family_dict, individual_dict) #US13
+    mutiple_birth(family_dict, individual_dict)
 
     '''Uncomment these if you want to see the individual and family objects created from Individual and Family class'''
     # for key, value in individual_dict.items():
@@ -440,7 +481,7 @@ def main():
         print(error)
 
     # 6. Export for testing
-    return [individual_dict, family_dict]
+    return [individual_dict, family_dict, ErrorCollector.error_list]
 
 
 """Run Main Function"""
