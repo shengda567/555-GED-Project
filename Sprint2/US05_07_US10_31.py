@@ -295,20 +295,20 @@ def marriage_before_death(family_dict, individual_dict):
         if husband_ID != 'NA' and wife_ID != 'NA':
             husband_death_date = individual_dict[husband_ID].deat.snake_year_month_day()
             wife_death_date = individual_dict[wife_ID].deat.snake_year_month_day()
-
-            if husband_death_date == 'NA' and wife_death_date == 'NA':
-                US05_report[fam] = True
-            elif husband_death_date != 'NA' and wife_death_date == 'NA':
-                US05_report[fam] = husband_death_date >= marriage_date
-            elif wife_death_date != 'NA' and husband_death_date == 'NA':
-                US05_report[fam] = wife_death_date >= marriage_date
-            else:
-                first_death_date = husband_death_date if husband_death_date <= wife_death_date else wife_death_date
-                US05_report[fam] = first_death_date >= marriage_date
+            if marriage_date != 'NA':
+                if husband_death_date == 'NA' and wife_death_date == 'NA':
+                    US05_report[fam] = True
+                elif husband_death_date != 'NA' and wife_death_date == 'NA':
+                    US05_report[fam] = husband_death_date >= marriage_date
+                elif wife_death_date != 'NA' and husband_death_date == 'NA':
+                    US05_report[fam] = wife_death_date >= marriage_date
+                else:
+                    first_death_date = husband_death_date if husband_death_date <= wife_death_date else wife_death_date
+                    US05_report[fam] = first_death_date >= marriage_date
     for id, boolean in US05_report.items():
-        if boolean != True:
+        if boolean == False:
             ErrorCollector.error_list.append(f"ERROR: FAMILY: US05: Family ID: {id} Marriage occur before death of either spouse.")
-    #print(US05_report)
+    #print('5',US05_report)
     return US05_report
 
 '''User Story 07: Less Than 150 Years Old'''
@@ -334,10 +334,10 @@ def less_than_150_years_old(individual_dict):
                     US07_report[id] = True
     for id, boolean in US07_report.items():
         if boolean == False:
-            ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US07: line 202: Individual ID: {id} "
+            ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US07: Individual ID: {id} "
                                              f"Death should be less than 150 years after birth for dead people, "
                                              f"and current date should be less than 150 years after birth for all living people")
-    #print(US07_report)
+    #print('7',US07_report)
     return US07_report
 
 """Shengda's Code Goes Here"""
@@ -364,7 +364,7 @@ def marriage_after_14(family_dict, individual_dict):
             ErrorCollector.error_list.append(f"ERROR: FAMILY: US10: Family ID: {id}, marriage date is {boolean[0]}, "
                   f"husband birth day is {boolean[1]}, wife birth day is {boolean[2]},"
                   f"married before 14 years old.")
-    #print(US10_report)
+    #print('10', US10_report)
     return US10_report
 
 #User Story 10 helper
@@ -394,7 +394,7 @@ def list_living_single(family_dict, individual_dict):
         if boolean != False:
             ErrorCollector.error_list.append(f"ERROR: INDIVIDUAL: US31: Individual ID: {id}, Age is {boolean[0]}, FamilyID is {boolean[1]}, "
                   f"who is living people over 30 but have never been married")
-    #print(US31_report)
+    #print('31',US31_report)
     return US31_report
 
 """Xiangyu's Code Goes Here"""
